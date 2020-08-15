@@ -7,24 +7,46 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <nav>
-    <ul>
-      <% if user_signed_in? %>
-        <li>ユーザー</li>
-        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-      <% elsif admin_signed_in? %>
-        <li>管理者</li>
-        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-      <% else %>
-        <li>ゲストユーザー</li>
-        <li><%= link_to "新規登録", new_user_registration_path %></li>
-        <li><%= link_to "ログイン", new_user_session_path %></li>
-      <% end %>
-    </ul>
-  </nav>
   </head>
 
   <body>
+    <header class="navbar clearfix navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav">
+            <%= link_to "#" %>
+          </ul>
+        </nav>
+        <nav>
+          <ul class="nav justify-content-end">
+            <!-- 会員ログイン時 -->
+            <% if user_signed_in? %>
+              <li id="nav-message"> ようこそ　　さん！</li>
+              <li><%= link_to "マイページ", "#" %></li>
+              <li><%= link_to "レシピ一覧", "#" %></li>
+              <li><%= link_to "カレンダー", "#" %></li>
+              <li><%= link_to "冷蔵庫", "#" %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <!-- 管理者ログイン時 -->
+            <% elsif admin_signed_in? %>
+              <li><%= link_to "店舗一覧", "#" %></li>
+              <li><%= link_to "店舗カテゴリ", "#" %></li>
+              <li><%= link_to "レシピタグ", "#" %></li>
+              <li><%= link_to "レシピカテゴリ", "#" %></li>
+              <li><%= link_to "食材カテゴリ", "#" %></li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+            <!-- ログインしていない時 -->
+            <% else %>
+              <li><%= link_to "about", "#" %></li>
+              <li><%= link_to "レシピ一覧", "#" %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
+              <li><%= link_to "管理者はこちら", new_admin_session_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>

@@ -15,5 +15,10 @@ Rails.application.routes.draw do
     post 'admin/sign_in' => 'admin/sessions#create', as: 'admin_session'
     delete 'admin/sign_out' => 'admin/sessions#destroy', as: 'destroy_admin_session'
   end
+
+  root 'recipes#index'
+  namespace :users do
+    resources :recipes
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
