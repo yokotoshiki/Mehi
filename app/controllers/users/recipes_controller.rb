@@ -1,14 +1,13 @@
 class Users::RecipesController < ApplicationController
   def top
-      @recipe =Recipe.all
+     @recipe =Recipe.all
   end
   def index
-      @recipes = Recipe.all
+     @recipes = Recipe.all
   end
 
   def show
      @recipe = Recipe.find(params[:id])
-     @recipe = Recipe.new
   end
 
   def new
@@ -40,6 +39,6 @@ class Users::RecipesController < ApplicationController
   private
 
   def recipe_params
-     params.require(:recipe).permit(:name, :image_id, :ingredient, :seasoning, :explanation, :time, :quanitiy, :plan, :price)
+     params.require(:recipe).permit(:name, :image_id, :ingredient, :seasoning, :explanation, :time, :quanitiy, :plan, :price, :recipe_category_id)
   end
 end

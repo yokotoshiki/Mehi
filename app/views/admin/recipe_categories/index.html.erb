@@ -1,0 +1,30 @@
+<section class="inner">
+  <h2>レシピカテゴリ管理</h2>
+
+	<%= form_with model: @recipe_category, url:admin_recipe_categories_path, local: true do |f| %>
+	    <%= f.label :name, "カテゴリ名" %></br>
+	    <%= f.text_field :name %>
+
+	    <%= f.submit "追加",class: "btn btn-primary" %>
+    <% end %>
+
+    <table class="table">
+    	<thead>
+    		<tr>
+    			<th>レシピカテゴリ</th>
+    			<th colspan = "2"></th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<% @recipe_categories.each do |recipe_category| %>
+    		<tr>
+    			<td><%= recipe_category.name %></td>
+    			<td><%= link_to "編集", edit_admin_recipe_category_path(recipe_category),class: "btn btn-primary" %>
+    			    <%= link_to "削除", admin_recipe_category_path(recipe_category), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+    			</td>
+    		</tr>
+    		<% end %>
+    	</tbody>
+    </table>
+</section>
+

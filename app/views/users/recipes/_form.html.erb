@@ -37,6 +37,10 @@
 	    	    <td><%= f.label :price, "価格" %></td>
 	    	    <td>おおよそ　<%= f.text_field :price %>　円</td>
 	        </tr>
+	        <tr>
+	    	    <td><%= f.label :recipe_category_id, "カテゴリ" %></td>
+	    	    <td><%= f.collection_slect :recipe_category_id, RecipeCategory.all, :id, :name,{prompt: '選択してください'} %></td>
+	        </tr>
 	    </tbody>
 	</table>
 	<%= f.submit submit, class:"btn btn-lg btn-primary" %>

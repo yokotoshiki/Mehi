@@ -20,5 +20,13 @@ Rails.application.routes.draw do
   namespace :users do
     resources :recipes
   end
+
+  namespace :admin do
+    resources :recipe_categories, except: [:new, :show]
+    resources :stre_categories, except: [:new, :show]
+    resources :ingredient_categories, except: [:new, :show]
+  end
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

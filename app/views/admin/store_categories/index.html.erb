@@ -1,0 +1,29 @@
+<section class="inner">
+  <h2>店舗カテゴリ管理</h2>
+
+	<%= form_with model: @store_category, url:admin_store_categories_path, local: true do |f| %>
+	    <%= f.label :name, "カテゴリ名" %></br>
+	    <%= f.text_field :name %>
+
+	    <%= f.submit "追加",class: "btn btn-primary" %>
+    <% end %>
+
+    <table class="table">
+    	<thead>
+    		<tr>
+    			<th>店舗カテゴリ</th>
+    			<th colspan = "2"></th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<% @store_categories.each do |store_category| %>
+    		<tr>
+    			<td><%= store_category.name %></td>
+    			<td><%= link_to "編集", edit_admin_store_category_path(store_category),class: "btn btn-primary" %>
+    			    <%= link_to "削除", admin_store_category_path(store_category), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+    			</td>
+    		</tr>
+    		<% end %>
+    	</tbody>
+    </table>
+</section>

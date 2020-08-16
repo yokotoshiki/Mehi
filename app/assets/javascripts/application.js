@@ -16,6 +16,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+//= require jquery_ujs
 
 $(document).on("turbolinks:load", function(){
  //画像プレビュー機能
