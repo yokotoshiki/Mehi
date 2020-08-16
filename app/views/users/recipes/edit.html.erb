@@ -1,0 +1,6 @@
+<section class="inner">
+	<div class="col text-center">
+	    <h2><%= @recipe.name %>の編集</h2>
+	</div>
+    <%= render "form", recipe: @recipe, url: users_recipe_path(@recipe), submit: "更新" %>
+</section>
