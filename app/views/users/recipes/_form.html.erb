@@ -3,7 +3,7 @@
   	<div class="recipe_image">
 	  	<%= f.label :image, "料理画像" %></br>
 	  	<%= attachment_image_tag recipe, :image, id: "img_prev", fallback: "no_image.jpg",size: "300x300" %></br>
-	  	<%= f.attachment_field :image %>
+	  	<%= f.attachment_field :image, id: :image%>
     </div>
 
 

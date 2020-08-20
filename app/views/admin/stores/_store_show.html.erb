@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-4">
+		 <div class="col text-center">
+			<div class="store-image">
+				<%= attachment_image_tag @store, :image,fallback: "no_image.jpg",size: "200x200"%>
+				<p><%= @store.name %></p>
+			</div>
+         </div>
+    </div>
+
+     <div class="col-7">
+         <div class="recipe-explanation">
+	    	<p>店舗説明</p>
+	    	<p><%= @store.explanation %></p>
+	     </div>
+	 </div>
+</div>
+
+<div class="col text-center">
+	<table class="table table-hover ">
+        <tbody>
+	        <tr>
+	    	    <td>エリア</td>
+	    	    <td><%= @store.area %></td>
+	        </tr>
+	        <tr>
+	    	    <td>店舗住所</td>
+	    	    <td><%= @store.address %></td>
+	        </tr>
+	        <tr>
+	    	    <td>カテゴリ</td>
+	    	    <td><%= @store.store_category.name %></td>
+	        </tr>
+	        <tr>
+	    	    <td>店舗URL</td>
+	    	    <td><%= @store.url %></td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>

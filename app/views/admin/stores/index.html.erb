@@ -1,0 +1,30 @@
+<div class="row">
+	<h2>店舗一覧</h2>
+		<%= link_to new_admin_store_path do %>
+		  <i class="fas fa-plus-circle" style="font-size: 40px; float: right; color: #777777"></i>
+		<% end %>
+	</div>
+</div>
+
+<table class="table">
+	<thead class="thead-light">
+		<tr>
+			<th>店舗ID</th>
+			<th>店舗名</th>
+			<th>エリア</th>
+			<th>カテゴリ</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @stores.each do |store| %>
+		<tr>
+			<td><%= store.id %></td>
+			<td><%= link_to store.name, admin_store_path(store) %></td>
+			<td><%= store.area %></td>
+			<td><%= store.store_category.name %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+

@@ -19,12 +19,14 @@ Rails.application.routes.draw do
   root to: 'users/recipes#top'
   namespace :users do
     resources :recipes
+    resources :stores, only: [:index,:show]
   end
 
   namespace :admin do
+    resources :stores
     resources :recipe_categories, except: [:new, :show]
     resources :store_categories, except: [:new, :show]
-    resources :ingredient_categories, except: [:new, :show]
+    resources :ingreduent_categories, except: [:new, :show]
   end
 
 

@@ -20,7 +20,7 @@
 
 $(document).on("turbolinks:load", function(){
  //画像プレビュー機能
- function readURL(input) {
+  function readURL(input) {
    if (input.files && input.files[0]) {
      var reader = new FileReader();
      reader.onload = function (e) {
@@ -29,7 +29,8 @@ $(document).on("turbolinks:load", function(){
      reader.readAsDataURL(input.files[0]);
    }
  }
- $("#recipe_image").change(function(){
+ $("#image").change(function(){
    readURL(this);
+
  });
 });
