@@ -1,6 +1,6 @@
 class Users::RecipesController < ApplicationController
   def top
-     @recipe =Recipe.all
+     @recipes =Recipe.all
   end
   def index
      @recipes = Recipe.all
@@ -16,8 +16,9 @@ class Users::RecipesController < ApplicationController
 
   def create
      @recipe = Recipe.new(recipe_params)
+     @recipe.user = current_user
      @recipe.save
-     redirect_to users_users_path, notice:"レシピを登録しました。"
+     redirect_to users_recipes_path, notice:"レシピを登録しました。"
   end
 
   def edit
@@ -39,6 +40,6 @@ class Users::RecipesController < ApplicationController
   private
 
   def recipe_params
-     params.require(:recipe).permit(:name, :image_id, :ingredient, :seasoning, :explanation, :time, :quanitiy, :plan, :price, :recipe_category_id)
+     params.require(:recipe).permit(:name, :image, :ingredient, :seasoning, :explanation, :time, :quanitiy, :plan, :price, :recipe_category_id)
   end
 end

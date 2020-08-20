@@ -1,3 +1,3 @@
 class RecipeCategory < ApplicationRecord
-	belongs_to :recipe, optional: true
+	has_many :recipes, dependent: :destroy
 end

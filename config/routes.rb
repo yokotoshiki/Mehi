@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :recipe_categories, except: [:new, :show]
-    resources :stre_categories, except: [:new, :show]
+    resources :store_categories, except: [:new, :show]
     resources :ingredient_categories, except: [:new, :show]
   end
 

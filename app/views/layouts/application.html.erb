@@ -23,7 +23,7 @@
             <% if user_signed_in? %>
               <li id="nav-message"> ようこそ　　さん！</li>
               <li><%= link_to "マイページ", "#" %></li>
-              <li><%= link_to "レシピ一覧", "#" %></li>
+              <li><%= link_to "レシピ一覧", users_recipes_path %></li>
               <li><%= link_to "カレンダー", "#" %></li>
               <li><%= link_to "冷蔵庫", "#" %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>

@@ -39,7 +39,7 @@
 	        </tr>
 	        <tr>
 	    	    <td><%= f.label :recipe_category_id, "カテゴリ" %></td>
-	    	    <td><%= f.collection_slect :recipe_category_id, RecipeCategory.all, :id, :name,{prompt: '選択してください'} %></td>
+	    	    <td><%= f.collection_select :recipe_category_id, RecipeCategory.all, :id, :name,{prompt: '選択してください'} %></td>
 	        </tr>
 	    </tbody>
 	</table>

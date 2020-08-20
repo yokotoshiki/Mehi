@@ -1,21 +1,26 @@
-<div class="mx-auto" style="width: 100%;">
+ <div class="col text-center">
 	<div class="main-visual">
 		<div class="main-visual-text">
 			<p>ようこそ<strong>Mehiへ</strong></p>
-			<%= link_to  '初めて利用される方' '#' %></<br>
+			<%= link_to  '初めて利用される方'  %></br>
 			<div class="btn-group" role="group">
 	            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
 	            <%= link_to "ログイン", new_user_session_path,class: "btn btn-success" %>
+            </div>
         </div>
     </div>
+</div>
 
+
+  <div class="col text-center">
     <h2>オススメ</h2>
+  </div>
     <div class="recipe-picup">
-    	<% @recipe.each do |recipe| %>
+    	<% @recipes.each do |recipe| %>
     	  <div class = "recipe-box">
     	  	<div class = "image-box">
     	  		<%= link_to users_recipe_path(recipe) do %>
-    	  		  <%= attachment_image_tag recipe, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
+    	  		  <%= attachment_image_tag recipe, :image,fallback: "no_image.jpg",size: "200x200" %>
     	  		<% end %>
     	  	</div>
     	  	<p><%= recipe.name %></p>
@@ -26,7 +31,7 @@
     <div class="see-more" style="float: right;">
     	<%= link_to "もっと見る", users_recipes_path %>
     </div>
-</div>
+
 
 
 

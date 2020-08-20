@@ -14,3 +14,6 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+Refile.secret_key = '3cee648281388112372a5a11fb086df0183ede4838e130a8b67c30dff337ca5ce6f6e2d98e55c29c92d30e4278691960bab3758f41cf1d59eb63342a1fb3f011'
+
