@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   root to: 'users/recipes#top'
   namespace :users do
-    resources :recipes
+    resources :recipes do
+      resource :favorites, only: [:create, :destroy]
+    end
     resources :stores, only: [:index,:show]
     resources :ingredients
   end

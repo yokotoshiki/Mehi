@@ -8,8 +8,20 @@
     	  		  <%= attachment_image_tag recipe, :image,fallback: "no_image.jpg",size: "200x200"%>
     	  		<% end %>
     	  	</div>
-    	  	<p><%= recipe.name %></p>
-    	  </div>
-    	<% end %>
+    	  	<div><%= recipe.name %></div>
+          <!-- いいね機能 -->
+          <% if recipe.favorited_by?(current_user) %>
+              <%= link_to users_recipe_favorites_path(recipe), method:  :delete do %>
+                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= recipe.favorites.count %>いいね
+              <% end %>
+          <% else %>
+              <%= link_to users_recipe_favorites_path(recipe), method: :post do %>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <%= recipe.favorites.count %>いいね
+              <% end %>
+          <% end %>
+        </div>
+        <% end %>
     </div>
 </div>
