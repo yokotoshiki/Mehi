@@ -20,13 +20,14 @@ Rails.application.routes.draw do
   namespace :users do
     resources :recipes
     resources :stores, only: [:index,:show]
+    resources :ingredients
   end
 
   namespace :admin do
     resources :stores
     resources :recipe_categories, except: [:new, :show]
     resources :store_categories, except: [:new, :show]
-    resources :ingreduent_categories, except: [:new, :show]
+    resources :ingredient_categories, except: [:new, :show]
   end
 
 

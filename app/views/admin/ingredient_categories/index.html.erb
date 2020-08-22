@@ -19,8 +19,8 @@
     		<% @ingredient_categories.each do |ingredient_category| %>
     		<tr>
     			<td><%= ingredient_category.name %></td>
-    			<td><%= link_to "編集", edit_admin_ingredient_category_path(store_category),class: "btn btn-primary" %>
-    			    <%= link_to "削除", admin_ingredient_category_path(store_category), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+    			<td><%= link_to "編集", edit_admin_ingredient_category_path(ingredient_category),class: "btn btn-primary" %>
+    			    <%= link_to "削除", admin_ingredient_category_path(ingredient_category), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
     			</td>
     		</tr>
     		<% end %>

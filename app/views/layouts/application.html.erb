@@ -26,7 +26,7 @@
               <li><%= link_to "マイページ", "#" %></li>
               <li><%= link_to "レシピ一覧", users_recipes_path %></li>
               <li><%= link_to "カレンダー", "#" %></li>
-              <li><%= link_to "冷蔵庫", "#" %></li>
+              <li><%= link_to "冷蔵庫", users_ingredients_path %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             <!-- 管理者ログイン時 -->
             <% elsif admin_signed_in? %>
@@ -34,12 +34,12 @@
               <li><%= link_to "店舗カテゴリ", admin_store_categories_path %></li>
               <li><%= link_to "レシピタグ", "#" %></li>
               <li><%= link_to "レシピカテゴリ", admin_recipe_categories_path  %></li>
-              <li><%= link_to "食材カテゴリ", admin_ingreduent_categories_path  %></li>
+              <li><%= link_to "食材カテゴリ", admin_ingredient_categories_path  %></li>
               <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
             <!-- ログインしていない時 -->
             <% else %>
               <li><%= link_to "about", "#" %></li>
-              <li><%= link_to "レシピ一覧", "#" %></li>
+              <li><%= link_to "レシピ一覧", users_recipes_path %></li>
               <li><%= link_to "新規登録", new_user_registration_path %></li>
               <li><%= link_to "ログイン", new_user_session_path %></li>
               <li><%= link_to "管理者はこちら", new_admin_session_path %></li>
