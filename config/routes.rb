@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :recipe_categories, except: [:new, :show]
     resources :store_categories, except: [:new, :show]
     resources :ingredient_categories, except: [:new, :show]
+    resources :tags, except: [:new, :show]
   end
 
 

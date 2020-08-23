@@ -22,9 +22,9 @@ class Admin::StoreCategoriesController < ApplicationController
 		@store_category = StoreCategory.find(params[:id])
 		if @store_category.update(store_category_params)
 		   redirect_to  admin_store_categories_path
-		 else
+		else
 		 	render 'edit'
-		 end
+		end
 	end
 
 	def destroy

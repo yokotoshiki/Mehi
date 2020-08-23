@@ -8,6 +8,7 @@ class Users::RecipesController < ApplicationController
 
   def show
      @recipe = Recipe.find(params[:id])
+     @recipes = Recipe.all
   end
 
   def new
@@ -27,12 +28,14 @@ class Users::RecipesController < ApplicationController
 
   def update
      @recipe = Recipe.find(params[:id])
-     @recipe.update(recipe.params)
+     @recipe.user = current_user
+     @recipe.update(@recipe.params)
      redirect_to users_user_path(@recipe), notice:"レシピを編集しました。"
   end
 
+
   def destroy
-     @recipe = Recipe.find (params[:id])
+     @recipe = Recipe.find(params[:id])
      @recipe.destroy
      redirect_to users_users_path
   end
@@ -40,6 +43,6 @@ class Users::RecipesController < ApplicationController
   private
 
   def recipe_params
-     params.require(:recipe).permit(:name, :image, :ingredient, :seasoning, :explanation, :time, :quanitiy, :plan, :price, :recipe_category_id)
+     params.require(:recipe).permit(:name, :image, :ingredient, :seasoning, :explanation, :time, :quanitiy, :plan, :price, :recipe_category_id, :tag_ids [])
   end
 end

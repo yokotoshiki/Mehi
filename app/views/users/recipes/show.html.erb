@@ -8,7 +8,7 @@
          </div>
     </div>
 
-     <div class="col-7">
+     <div class="col-8">
          <div class="recipe-explanation">
 	    	<p>作り方</p>
 	    	<p><%= @recipe.explanation %></p>
@@ -42,6 +42,16 @@
 	    	    <td>カテゴリ</td>
 	    	    <td><%= @recipe.recipe_category.name %></td>
 	        </tr>
-	    </tbody>
+	        <tr>
+	    	    <td>タグ</td>
+				<td>
+					<% @recipe.tags.each do |tag| %>
+				      <%= recipe.tag.name %>
+				    <% end %>
+				</td>
+	        </tr>
+        </tbody>
 	</table>
+			<p><%= link_to "編集する", edit_users_recipe_path(@recipe), class: "btn-lg btn-success edit_store_#{@recipe.id}" %>
+			<%= link_to "削除する", users_recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-lg btn-danger destroy_store_#{@recipe.id}" %></p>
 </div>

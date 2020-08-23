@@ -1,6 +1,9 @@
 <div class="col text-center">
     <div class="recipe-picup">
         <h1>レシピ一覧</h1>
+        <%= link_to new_users_recipe_path do %>
+           <i class="fas fa-plus-circle" style="font-size: 40px; float: right; color: #777777"></i>
+        <% end %>
     	<% @recipes.each do |recipe| %>
     	  <div class = "recipe-box">
     	  	<div class = "image-box">
