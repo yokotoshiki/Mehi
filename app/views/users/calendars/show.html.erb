@@ -1,0 +1,44 @@
+<%= form_for(@recipe, url: users_calendar_path method"POST") do |f| %>
+ <div class="col text-center">
+ <table class="table">
+        <tbody>
+            <tr>
+	    	    <td><%= f.label :name, "料理名" %></td>
+	    	    <td><%= f.text_field :name %></td>
+	        </tr>
+	        <tr>
+	    	    <td><%= f.label :explanation, "作り方" %></td>
+	    	    <td><%= f.text_area :explanation, size:"100x10" %></td>
+	        </tr>
+	        <tr>
+	    	    <td><%= f.label :ingredient, "材料" %></td>
+	    	    <td><%= f.text_area :ingredient,size:"100x5" %></td>
+	        </tr>
+	        <tr>
+	    	    <td><%= f.label :seasoning, "調味料" %></td>
+	    	    <td><%= f.text_area :seasoning,size:"100x5" %></td>
+	        </tr>
+	        <tr>
+	    	    <td><%= f.label :time, "調理時間" %></td>
+	    	    <td>おおよそ　<%= f.text_field :time %>　分</td>
+	        </tr>
+	        <tr>
+	    	    <td><%= f.label :quanitiy, "分量" %></td>
+	    	    <td><%= f.text_field :quanitiy %>　人分</td>
+	        </tr>
+	        <tr>
+	    	    <td><%= f.label :price, "価格" %></td>
+	    	    <td>おおよそ　<%= f.text_field :price %>　円</td>
+	        </tr>
+       </tbody>
+	</table>
+		<% if @recipe.user.id == current_user.id %>
+		<%= form_for(@calendar, url: users_calendars_path) do |f| %>
+		    <%= f.label :plan, "料理予定日" %>
+		    <%= f.date_field(:plan) %>
+
+	<%= f.submit "追加", class:"btn btn-lg btn-primary" %>
+  </div>
+  <% end %>
+  <% end %>
+<% end %>

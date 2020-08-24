@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_005829) do
 
   create_table "calendars", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "recipe"
+    t.integer "recipe_id"
     t.string "name"
     t.text "ingredient"
     t.text "seasoning"
@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2020_08_24_005829) do
     t.text "explanation"
     t.integer "time"
     t.integer "quanitiy"
-    t.date "plan"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

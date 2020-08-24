@@ -1,30 +1,23 @@
 class Users::CalendarsController < ApplicationController
   def index
-     @calendars = Calendar.all
+     @calendar = current_user.calendars
   end
 
   def show
-     @calendar = Calendar.find(params[:id])
+     @recipe = Recipe.find(params[:id])
+     @calendar = Calendar.new
   end
 
   def new
+     @recipe = Recipe.find(params[:id])
      @calendar = Calendar.new
   end
 
   def create
-  	 @recipe = Recipe.find(params[:id])
-     @calendar = Calendar.new(calendar.params)
-     @calender.name = @recipe.name
-     @calender.ingredient = @recipe.ingredient
-     @calender.seasoning = @recipe.seasoning
-     @calender.explanation = @recipe.explanation
-     @calender.time = @recipe.time
-     @calender.quanitiy = @recipe.quanitiy
-     @calender.price = @recipe.price
-     @calender.plan = params[:plan]
-     @calendar.save
+     @recipe = Recipe.find(params[:calendar][:recipe_id])
+     current_user.calendars.create!(recipe_id: @recipe.id,plan:params[:calendar][:plan])
      redirect_to users_calendars_path, notice:"登録しました。"
-end
+  end
 
   def edit
      @calendar = Calendar.find(params[:id])
@@ -46,10 +39,10 @@ end
   private
 
   def recipe_params
-     params.require(:recipe).permit(:name, :ingredient, :seasoning, :explanation, :time, :quanitiy, :plan, :price, :recipe_category_id)
+     params.require(:recipe).permit(:name, :ingredient, :seasoning, :explanation, :time, :quanitiy, :price, :recipe_category_id)
   end
 
   def calendar_params
-     params.require(:calendar).permit(:name,  :ingredient, :seasoning, :explanation, :time, :quanitiy, :plan, :price, :recipe_id, :user_id)
+     params.require(:calendar).permit(:name,  :ingredient, :seasoning, :explanation, :time, :quanitiy, :price, :recipe_id, :user_id)
   end
 end

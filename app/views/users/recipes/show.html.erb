@@ -46,7 +46,7 @@
 	    	    <td>タグ</td>
 				<td>
 					<% @recipe.tags.each do |tag| %>
-				      <%= recipe.tag.name %>
+				      <%= tag.tag_name %>
 				    <% end %>
 				</td>
 	        </tr>
@@ -55,7 +55,8 @@
 	<% if @recipe.user.id == current_user.id %>
 		<%= form_for(@calendar, url: users_calendars_path) do |f| %>
 		    <%= f.label :plan, "料理予定日" %>
-		    <%= f.date_field(:plan,use_month_numbers: true) %>
+		    <%= f.hidden_field :recipe_id, :value => @recipe.id%>
+		    <%= f.date_field(:plan) %>
 		  <%= f.submit "追加", class:"btn btn-lg btn-primary" %>
 		<% end %>
 	<% end %>

@@ -10,7 +10,6 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.text :explanation
       t.integer :time
       t.integer :quanitiy
-      t.date :plan
       t.integer :price
 
       t.timestamps

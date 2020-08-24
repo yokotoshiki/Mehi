@@ -40,6 +40,20 @@
 	        <tr>
 	    	    <td><%= f.label :recipe_category_id, "カテゴリ" %></td>
 	    	    <td><%= f.collection_select :recipe_category_id, RecipeCategory.all, :id, :name,{prompt: '選択してください'} %></td>
+	    	</tr>
+	    	<tr>
+            	<td>タグ</td>
+            	<td>
+		            <%= f.collection_check_boxes(:tag_ids, @tags, :id, :tag_name) do |tag| %>
+		                <div class='form-check'>
+			                <%= tag.label class: 'form-check-label' do %>
+			                    <%= tag.check_box class: 'form-check-input' %>
+			                    <%= tag.text %>
+			                <% end %>
+		                 </div>
+		            <% end %>
+		        </td>
+	        </tr>
        </tbody>
 	</table>
 	<%= f.submit submit, class:"btn btn-lg btn-primary" %>
