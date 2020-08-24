@@ -15,17 +15,17 @@
       <div class="container">
         <nav>
           <ul class="nav">
-            <%= link_to "#" %>
+            <%= link_to "Mehi" %>
           </ul>
         </nav>
         <nav>
           <ul class="nav justify-content-end">
             <!-- 会員ログイン時 -->
             <% if user_signed_in? %>
-              <li id="nav-message"> ようこそ　　さん！</li>
-              <li><%= link_to "マイページ", "#" %></li>
+              <li id="nav-message"> ようこそ<%= current_user.name %>さん！</li>
+              <li><%= link_to "マイページ", users_user_path(current_user.id) %></li>
               <li><%= link_to "レシピ一覧", users_recipes_path %></li>
-              <li><%= link_to "カレンダー", "#" %></li>
+              <li><%= link_to "カレンダー", users_calendars_path%></li>
               <li><%= link_to "冷蔵庫", users_ingredients_path %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             <!-- 管理者ログイン時 -->

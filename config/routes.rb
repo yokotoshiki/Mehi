@@ -16,13 +16,15 @@ Rails.application.routes.draw do
     delete 'admin/sign_out' => 'admin/sessions#destroy', as: 'destroy_admin_session'
   end
 
-  root to: 'users/recipes#top'
+  root to: 'users/recipes#index'
   namespace :users do
     resources :recipes do
       resource :favorites, only: [:create, :destroy]
     end
     resources :stores, only: [:index,:show]
     resources :ingredients
+    resources :calendars
+    resources :users, only: [:show,:index,:edit,:update]
   end
 
   namespace :admin do

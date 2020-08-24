@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3">
+            <h1>ユーザー情報</h1>
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th><%= current_user.nickname %></th>
+                    </tr>
+                    <tr>
+                        <th>introduction</th>
+                        <th><%= current_user.introduction %></th>
+                    </tr>
+                </table>
+
+                <p><%= link_to "編集する", edit_users_user_path(current_user), class: "btn-lg btn-success" %></p>
+
+
+
+        <div class="col-xs-9">
+            <h1>ユーザー一覧</h1>
+                <table class="table">
+	                  <thead>
+                        <tr>
+                            <th>投稿者</th>
+                            <th colspan="3"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @users.each do |user| %>
+                            <tr>
+ 	                              <td><%= user.nickname %></td>
+ 	                              <td><%= link_to "Show", users_user_path(current_user.id) %></td>
+                            </tr>
+                        <% end %>
+ 	                  </tbody>
+                </table>
+        </div>
+    </div>
+</div>
