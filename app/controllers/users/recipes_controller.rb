@@ -29,6 +29,7 @@ class Users::RecipesController < ApplicationController
 
   def edit
      @recipe = Recipe.find(params[:id])
+     @tags = Tag.all
   end
 
   def update
@@ -43,6 +44,10 @@ class Users::RecipesController < ApplicationController
      @recipe = Recipe.find(params[:id])
      @recipe.destroy
      redirect_to users_recipes_path
+  end
+
+  def collection
+    @recipes = Recipe.order("RANDOM()").limit(20).page(params[:page]).per(1)
   end
 
   private

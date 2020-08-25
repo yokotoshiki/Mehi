@@ -7,7 +7,7 @@
 		<tr>
 			<th>日時</th>
 			<th>料理名</th>
-			<th>買う物リスト</th>
+			<th></th>
 			<th></th>
 		</tr>
 	</thead>
@@ -17,8 +17,8 @@
 		<tr>
 			<td><%= calendar.plan %></td>
 			<td><%= link_to calendar.recipe.name, users_recipe_path(calendar.recipe) %></td>
-			<td><%= link_to "編集", edit_users_calendar_path(calendar), class: "btn-lg btn-success" %>
-			<%= link_to "削除", users_calendar_path(calendar), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-lg btn-dangar" %></td>
+			<td>
+			<%= link_to "削除", users_calendar_path(calendar), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-lg btn-success" %></td>
 		</tr>
 		<% end %>
 	</tbody>

@@ -4,6 +4,15 @@
 			<div class="recipe-image">
 				<%= attachment_image_tag @recipe, :image,fallback: "no_image.jpg",size: "200x200"%>
 				<p><%= @recipe.name %></p>
+				<% if @recipe.interested_by?(current_user) %>
+		              <%= link_to users_recipe_interests_path(@recipe), method:  :delete do %>
+		                <i class="far fa-star" aria-hidden="true" style="color: #FFD700;"></i>登録済み</br>
+		              <% end %>
+		          <% else %>
+		              <%= link_to users_recipe_interests_path(@recipe), method: :post do %>
+		                <i class="fas fa-plus" aria-hidden="true"></i>作ってみたい</br>
+		          <% end %>
+		         <% end %>
 			</div>
          </div>
     </div>

@@ -26,8 +26,8 @@ class Users::CalendarsController < ApplicationController
   def update
      @calendar = Calendar.find(params[:id])
      @calendar.user = current_user
-     @calendar.update(calendar.params)
-     redirect_to users_calender_path(@calendar), notice:"レシピを編集しました。"
+     @calendar.update(calendar_params)
+     redirect_to users_calendars_path, notice:"レシピを編集しました。"
   end
 
   def destroy
@@ -37,10 +37,6 @@ class Users::CalendarsController < ApplicationController
   end
 
   private
-
-  def recipe_params
-     params.require(:recipe).permit(:name, :ingredient, :seasoning, :explanation, :time, :quanitiy, :price, :recipe_category_id)
-  end
 
   def calendar_params
      params.require(:calendar).permit(:name,  :ingredient, :seasoning, :explanation, :time, :quanitiy, :price, :recipe_id, :user_id)
