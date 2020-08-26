@@ -1,5 +1,6 @@
 class Users::InterestsController < ApplicationController
-
+   # ログイン済ユーザーのみにアクセスを許可する
+    before_action :authenticate_user!
 	def create
 		@recipe = Recipe.find(params[:recipe_id])
 		@interest = @recipe.interests.new(user_id: current_user.id)

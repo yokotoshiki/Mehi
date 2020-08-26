@@ -1,6 +1,8 @@
 class Users::StoresController < ApplicationController
+	# ログイン済ユーザーのみにアクセスを許可する
+    before_action :authenticate_user!
 	def index
-		@stores = Stores.all
+		@stores = Store.all
 	end
 
 	def show

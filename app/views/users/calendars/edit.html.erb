@@ -1,13 +1,14 @@
 <%= form_for(@calendar, url: users_calendar_path(@calendar) ) do |f| %>
- <div class="col text-center">
-    <table class="table">
-        <tbody>
-	        <tr>
-	    	    <td><%= f.label :plan, "料理予定日" %></td>
-	    	    <td><%= f.date_field(:plan,use_month_numbers: true) %></td>
-	        </tr>
-	    </tbody>
-	</table>
-	<%= f.submit "更新", class:"btn btn-lg btn-primary" %>
-  </div>
+     <%= render 'layouts/error_messages', resource: @calendar %>
+	 <div class="col text-center">
+	    <table class="table">
+	        <tbody>
+		        <tr>
+		    	    <td><%= f.label :plan, "料理予定日" %></td>
+		    	    <td><%= f.date_field(:plan,use_month_numbers: true) %></td>
+		        </tr>
+		    </tbody>
+		</table>
+		<%= f.submit "更新", class:"btn btn-lg btn-primary" %>
+	  </div>
 <% end %>

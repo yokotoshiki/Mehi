@@ -1,40 +1,43 @@
-<%= form_for(store, url: url) do |f| %>
- <div class="col text-center">
-  	<div class="store_image">
-	  	<%= f.label :image, "店舗画像" %></br>
-	  	<%= attachment_image_tag store, :image, id: "img_prev", fallback: "no_image.jpg",size: "300x300" %></br>
-	  	<%= f.attachment_field :image, id: :image %>
+<div class="container">
+    <div class="col text-center">
+        <%= form_for(store, url: url) do |f| %>
+          <%= render 'layouts/error_messages', resource: store %>
+		  	<div class="store_image">
+			  	<%= f.label :image, "店舗画像" %></br>
+			  	<%= attachment_image_tag store, :image, id: "img_prev", fallback: "no_image.jpg",size: "300x300" %></br>
+			  	<%= f.attachment_field :image, id: :image %>
+		    </div>
+            <div  class="form-grop">
+	    	    <%= f.label :name, "店舗名" %></br>
+	    	    <%= f.text_field :name, size:"30x10" %>
+	    	</div>
+
+            <div  class="form-grop">
+	    	    <%= f.label :explanation, "店舗紹介文" %></br>
+	    	    <%= f.text_area :explanation, size:"100x10" %>
+	        </div>
+
+	        <div class="form-grop">
+                <%= f.label :area, "エリア" %></br>
+	    	    <%= f.select :area, Store.areas.keys,{prompt: '選択してください'} %>
+	    	</div>
+
+	        <div class="form-grop">
+	    	    <%= f.label :address, "住所" %></br>
+	    	    <%= f.text_area :address,size:"100x5" %>
+	        </div>
+
+	        <div class="form-grop">
+	    	    <%= f.label :url, "店舗URL" %></br>
+	    	    <%= f.text_field :url %>
+	    	</div>
+
+	    	<div class="form-grop">
+	    	    <%= f.label :store_category_id, "カテゴリ" %></br>
+	    	    <%= f.collection_select :store_category_id, StoreCategory.all, :id, :name,{prompt: '選択してください'} %></br>
+	        </div>
+
+	        <%= f.submit submit, class:"btn btn-lg btn-primary" %>
+         <% end %>
     </div>
-
-
-    <table class="table">
-        <tbody>
-            <tr>
-	    	    <td><%= f.label :name, "店舗名" %></td>
-	    	    <td><%= f.text_field :name %></td>
-	        </tr>
-	        <tr>
-	    	    <td><%= f.label :explanation, "店舗紹介文" %></td>
-	    	    <td><%= f.text_area :explanation, size:"100x10" %></td>
-	        </tr>
-	        <tr>
-	    	    <td><%= f.label :area, "エリア" %></td>
-	    	    <td><%= f.select :area, Store.areas.keys,{prompt: '選択してください'} %></td>
-	        </tr>
-	        <tr>
-	    	    <td><%= f.label :address, "住所" %></td>
-	    	    <td><%= f.text_area :address,size:"100x5" %></td>
-	        </tr>
-	        <tr>
-	    	    <td><%= f.label :url, "店舗URL" %></td>
-	    	    <td><%= f.text_field :url %></td>
-	        </tr>
-	        <tr>
-	    	    <td><%= f.label :store_category_id, "カテゴリ" %></td>
-	    	    <td><%= f.collection_select :store_category_id, StoreCategory.all, :id, :name,{prompt: '選択してください'} %></td>
-	        </tr>
-	    </tbody>
-	</table>
-	<%= f.submit submit, class:"btn btn-lg btn-primary" %>
-  </div>
-<% end %>
+</div>

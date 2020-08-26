@@ -1,4 +1,7 @@
 class Admin::StoresController < ApplicationController
+	# 管理者のみにアクセスを許可する
+	before_action :authenticate_admin!
+
 	def index
 		@stores = Store.all
 	end
@@ -13,8 +16,11 @@ class Admin::StoresController < ApplicationController
 
 	def create
 		 @store = Store.new(store_params)
-         @store.save!
+       if@store.save
 		 redirect_to  admin_stores_path
+	 else
+	 	render 'new'
+	 end
 	end
 
 
@@ -24,8 +30,11 @@ class Admin::StoresController < ApplicationController
 
 	def update
 		@store = Store.find(params[:id])
-		@store.update(store_params)
+	  if@store.update(store_params)
 		redirect_to  admin_stores_path
+	else
+		render 'edit'
+	  end
 	end
 
 	def destroy

@@ -1,4 +1,6 @@
 class Admin::TagsController < ApplicationController
+    # 管理者のみにアクセスを許可する
+	before_action :authenticate_admin!
 	def index
 		@tag = Tag.new
 		@tags = Tag.all

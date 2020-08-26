@@ -8,7 +8,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/fb9a7a8e33.js" crossorigin="anonymous"></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
   </head>
 
   <body>
@@ -23,7 +22,6 @@
           <ul class="nav justify-content-end">
             <!-- 会員ログイン時 -->
             <% if user_signed_in? %>
-              <li id="nav-message"> ようこそ<%= current_user.name %>さん！</li>
               <li><%= link_to "マイページ", users_user_path(current_user.id) %></li>
               <li><%= link_to "レシピ一覧", users_recipes_path %></li>
               <li><%= link_to "カレンダー", users_calendars_path%></li>
@@ -39,6 +37,7 @@
               <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
             <!-- ログインしていない時 -->
             <% else %>
+              <li><%= link_to "Home", root_path %></li>
               <li><%= link_to "about", "#" %></li>
               <li><%= link_to "レシピ一覧", users_recipes_path %></li>
               <li><%= link_to "新規登録", new_user_registration_path %></li>
@@ -49,7 +48,6 @@
         </nav>
       </div>
     </header>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
     <%= yield %>
   </body>
 </html>

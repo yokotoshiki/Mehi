@@ -1,4 +1,6 @@
 class Admin::StoreCategoriesController < ApplicationController
+    # 管理者のみにアクセスを許可する
+    before_action :authenticate_admin!
 	def index
 		@store_category = StoreCategory.new
 		@store_categories = StoreCategory.all

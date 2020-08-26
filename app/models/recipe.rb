@@ -8,7 +8,10 @@ class Recipe < ApplicationRecord
 	has_many :tags, through: :recipe_tags
 	has_many :calendars, dependent: :destroy
 	has_many :users, through: :favorites
+
 	attachment :image
+
+	validates :name, presence: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

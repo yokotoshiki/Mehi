@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :interests, dependent: :destroy
   has_many :calendars, dependent: :destroy
+
+  validates :name, presence: true
 end

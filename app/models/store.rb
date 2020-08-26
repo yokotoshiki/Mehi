@@ -13,4 +13,6 @@ class Store < ApplicationRecord
 		四国:8,
 		九州:9,
 	}
+
+	validates :name, presence: true
 end

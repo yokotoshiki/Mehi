@@ -1,4 +1,6 @@
 class Users::UsersController < ApplicationController
+	# ログイン済ユーザーのみにアクセスを許可する
+    before_action :authenticate_user!
 
 	def index
 		@users = User.all
@@ -16,8 +18,10 @@ class Users::UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		@user.update(user_params)
+		@user.id = current_user
+		if@user.update(user_params)
 		redirect_to users_user_path(current_user.id)
+	    else
 	end
 
 	private

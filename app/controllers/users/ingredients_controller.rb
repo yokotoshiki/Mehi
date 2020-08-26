@@ -1,5 +1,6 @@
 class Users::IngredientsController < ApplicationController
-
+   # ログイン済ユーザーのみにアクセスを許可する
+   before_action :authenticate_user!
 	def index
 		@ingredients = Ingredient.all
 	end
@@ -29,10 +30,11 @@ class Users::IngredientsController < ApplicationController
     	redirect_to users_ingredients_path
     end
 
-    def destory
-    	@ingredient = Ingredient.find(params[:id])
-    	@ingredient.destory
-    	redirect_to users_ingredients_path
+
+    def destroy
+         @ingredient = Ingredient.find (params[:id])
+         @ingredient.destroy
+         redirect_to users_ingredients_path
     end
 
     private

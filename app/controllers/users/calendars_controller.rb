@@ -1,4 +1,6 @@
 class Users::CalendarsController < ApplicationController
+  # ログイン済ユーザーのみにアクセスを許可する
+  before_action :authenticate_user!
   def index
      @calendar = current_user.calendars
   end

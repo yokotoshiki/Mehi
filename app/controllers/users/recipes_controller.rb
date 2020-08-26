@@ -1,9 +1,11 @@
 class Users::RecipesController < ApplicationController
+  # ログイン済ユーザーのみにアクセスを許可する
   def top
-     @recipes =Recipe.all
+     @recipes =Recipe.all.order(created_at: :desc).limit(6)
   end
   def index
      @recipes = Recipe.all
+     @tags = Tag.all
   end
 
   def show
@@ -20,11 +22,15 @@ class Users::RecipesController < ApplicationController
   def create
      @recipe = Recipe.new(recipe_params)
      @recipe.user = current_user
-     @recipe.save
-     params[:recipe][:tag_ids].drop(1).each do |tag_id|
-       RecipeTag.create!(recipe_id: @recipe.id , tag_id: tag_id)
+     if@recipe.save
+       params[:recipe][:tag_ids].drop(1).each do |tag_id|
+         RecipeTag.create!(recipe_id: @recipe.id , tag_id: tag_id)
+       end
+       redirect_to users_recipes_path, notice:"レシピを登録しました。"
+     else
+      @tags = Tag.all
+      render 'new'
      end
-     redirect_to users_recipes_path, notice:"レシピを登録しました。"
   end
 
   def edit
@@ -35,8 +41,11 @@ class Users::RecipesController < ApplicationController
   def update
      @recipe = Recipe.find(params[:id])
      @recipe.user = current_user
-     @recipe.update(recipe_params)
-     redirect_to users_recipe_path(@recipe), notice:"レシピを編集しました。"
+     if@recipe.update(recipe_params)
+       redirect_to users_recipe_path(@recipe), notice:"レシピを編集しました。"
+     else
+      render "edit"
+     end
   end
 
 
@@ -47,7 +56,7 @@ class Users::RecipesController < ApplicationController
   end
 
   def collection
-    @recipes = Recipe.order("RANDOM()").limit(20).page(params[:page]).per(1)
+    @recipes = Recipe.order("RANDOM()").page(params[:page]).per(1)
   end
 
   private

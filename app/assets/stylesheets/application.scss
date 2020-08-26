@@ -20,6 +20,23 @@
   box-sizing: border-box;
 }
 
+#error_explanation {
+  color: red;
+  padding-bottom: 20px;
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  ul {
+    padding-left: 50px;
+    list-style: circle;
+  }
+}
+
+.form_user{
+	text-align: center;
+}
+
 header{
 	height: 100px
 }
@@ -28,9 +45,15 @@ li {
 	margin-right: 10px;
 }
 
+.jumbotron {
+  background-image: url("top.jpg");
+  background-size: cover;
+  background-position: center 60%;
+}
+
 .navbar-inverse {
 	padding-top: 0px;
-	background: linear-gradient(#FFF,#00FFFF);
+	background: linear-gradient(white,#CCCCCC);
 }
 
 .navbar-nav {
@@ -45,10 +68,19 @@ li {
 	border-radius: 20px;
 }
 
-.recipe-box{
+.info-box{
 	width: 160px;
 	margin: 50px 30px 0 30px;
 	float: left;
+}
 
+.tag{
+    padding: 0.5px 0.5px;
+    margin: 2px 0;
+    border: double 3px #C0C0C0;
+}
+
+.ingredient{
+	margin-top: 50px;
 }
 

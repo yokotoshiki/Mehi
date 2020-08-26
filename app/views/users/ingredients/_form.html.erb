@@ -1,5 +1,6 @@
 <%= form_for(ingredient, url: url) do |f| %>
- <div class="col text-center">
+  <%= render 'layouts/error_messages', resource: ingredient %>
+  <div class="col text-center">
     <table class="table">
         <tbody>
             <tr>

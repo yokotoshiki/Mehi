@@ -1,5 +1,6 @@
 class Users::FavoritesController < ApplicationController
-
+   # ログイン済ユーザーのみにアクセスを許可する
+    before_action :authenticate_user!
 	def create
 		@recipe = Recipe.find(params[:recipe_id])
 		@favorite = @recipe.favorites.new(user_id: current_user.id)

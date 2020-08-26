@@ -1,4 +1,5 @@
 <%= form_for(recipe, url: url) do |f| %>
+ <%= render 'layouts/error_messages', resource: recipe %>
  <div class="col text-center">
   	<div class="recipe_image">
 	  	<%= f.label :image, "料理画像" %></br>

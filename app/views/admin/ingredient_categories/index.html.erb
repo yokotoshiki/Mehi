@@ -1,29 +1,31 @@
-<section class="inner">
-  <h2>食材カテゴリ管理</h2>
+<div class="container">
+    <div class="col text-center">
+        <h2>食材カテゴリ管理</h2>
 
-	<%= form_with model: @ingredient_category, url:admin_ingredient_categories_path, local: true do |f| %>
-	    <%= f.label :name, "カテゴリ名" %></br>
-	    <%= f.text_field :name %>
+    	<%= form_with model: @ingredient_category, url:admin_ingredient_categories_path, local: true do |f| %>
+    	    <%= f.label :name, "カテゴリ名" %>　
+    	    <%= f.text_field :name %>
 
-	    <%= f.submit "追加",class: "btn btn-primary" %>
-    <% end %>
+    	    <%= f.submit "追加",class: "btn btn-primary" %>
+        <% end %>
 
-    <table class="table">
-    	<thead>
-    		<tr>
-    			<th>食材カテゴリ</th>
-    			<th colspan = "2"></th>
-    		</tr>
-    	</thead>
-    	<tbody>
-    		<% @ingredient_categories.each do |ingredient_category| %>
-    		<tr>
-    			<td><%= ingredient_category.name %></td>
-    			<td><%= link_to "編集", edit_admin_ingredient_category_path(ingredient_category),class: "btn btn-primary" %>
-    			    <%= link_to "削除", admin_ingredient_category_path(ingredient_category), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
-    			</td>
-    		</tr>
-    		<% end %>
-    	</tbody>
-    </table>
-</section>
+        <table class="table">
+        	<thead>
+        		<tr>
+        			<th>食材カテゴリ</th>
+        			<th colspan = "2"></th>
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<% @ingredient_categories.each do |ingredient_category| %>
+        		<tr>
+        			<td><%= ingredient_category.name %></td>
+        			<td><%= link_to "編集", edit_admin_ingredient_category_path(ingredient_category),class: "btn btn-success" %>
+        			    <%= link_to "削除", admin_ingredient_category_path(ingredient_category), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+        			</td>
+        		</tr>
+        		<% end %>
+        	</tbody>
+        </table>
+    </div>
+</div>

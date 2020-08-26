@@ -1,18 +1,25 @@
 <div class="row">
+	<div class="col text-center">
+	  <h1><%= @recipe.name %></h1>
+	</div>
+</div>
+<div class="row">
     <div class="col-4">
-		 <div class="col text-center">
+        <div class="col text-center">
 			<div class="recipe-image">
 				<%= attachment_image_tag @recipe, :image,fallback: "no_image.jpg",size: "200x200"%>
-				<p><%= @recipe.name %></p>
-				<% if @recipe.interested_by?(current_user) %>
-		              <%= link_to users_recipe_interests_path(@recipe), method:  :delete do %>
-		                <i class="far fa-star" aria-hidden="true" style="color: #FFD700;"></i>登録済み</br>
-		              <% end %>
-		          <% else %>
-		              <%= link_to users_recipe_interests_path(@recipe), method: :post do %>
-		                <i class="fas fa-plus" aria-hidden="true"></i>作ってみたい</br>
-		          <% end %>
-		         <% end %>
+				    <p>レシピ投稿者<%= @recipe.user.nickname %></p>
+				<% if user_signed_in? %>
+					<% if @recipe.interested_by?(current_user) %>
+			              <%= link_to users_recipe_interests_path(@recipe), method:  :delete do %>
+			                <i class="far fa-star" aria-hidden="true" style="color: #FFD700;"></i>登録済み</br>
+			              <% end %>
+			          <% else %>
+			              <%= link_to users_recipe_interests_path(@recipe), method: :post do %>
+			                <i class="fas fa-plus" aria-hidden="true"></i>作ってみたい</br>
+			              <% end %>
+			        <% end %>
+			    <% end %>
 			</div>
          </div>
     </div>
@@ -23,6 +30,7 @@
 	    	<p><%= @recipe.explanation %></p>
 	     </div>
 	 </div>
+</div>
 
 <div class="col text-center">
 	<table class="table table-bordered">
@@ -61,14 +69,16 @@
 	        </tr>
         </tbody>
 	</table>
-	<% if @recipe.user.id == current_user.id %>
-		<%= form_for(@calendar, url: users_calendars_path) do |f| %>
-		    <%= f.label :plan, "料理予定日" %>
-		    <%= f.hidden_field :recipe_id, :value => @recipe.id%>
-		    <%= f.date_field(:plan) %>
-		  <%= f.submit "追加", class:"btn btn-lg btn-primary" %>
+	<% if user_signed_in? %>
+		<% if @recipe.user.id == current_user.id %>
+			<%= form_for(@calendar, url: users_calendars_path) do |f| %>
+			    <%= f.label :plan, "料理予定日" %>
+			    <%= f.hidden_field :recipe_id, :value => @recipe.id%>
+			    <%= f.date_field(:plan) %>
+			  <%= f.submit "追加", class:"btn btn-sm btn-primary" %>
+			<% end %>
+			<%= link_to "編集する", edit_users_recipe_path(@recipe), class: "btn btn-success edit_store_#{@recipe.id}" %>
+			<%= link_to "削除する", users_recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger destroy_store_#{@recipe.id}" %>
 		<% end %>
 	<% end %>
-			<p><%= link_to "編集する", edit_users_recipe_path(@recipe), class: "btn-lg btn-success edit_store_#{@recipe.id}" %>
-			<%= link_to "削除する", users_recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-lg btn-danger destroy_store_#{@recipe.id}" %></p>
 </div>

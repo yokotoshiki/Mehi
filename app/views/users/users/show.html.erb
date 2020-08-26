@@ -12,7 +12,9 @@
                         <th><%= current_user.introduction %></th>
                     </tr>
                 </table>
-                <p><%= link_to "編集する", edit_users_user_path(@user), class: "btn-lg btn-success edit_store_#{@user_id}" %></p>
+                <% if @user == current_user %>
+                  <p><%= link_to "編集する", edit_users_user_path(@user), class: "btn-lg btn-success edit_store_#{@user_id}" %></p>
+                <% end %>
               </div>
               <div class="col-9">
                        <h1>作りたいリスト</h1>
