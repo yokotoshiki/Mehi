@@ -1,8 +1,9 @@
 class Users::IngredientsController < ApplicationController
    # ログイン済ユーザーのみにアクセスを許可する
    before_action :authenticate_user!
+   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 	def index
-		@ingredients = Ingredient.all
+		@ingredients = current_user.ingredients
 	end
 
 	def show
@@ -38,10 +39,16 @@ class Users::IngredientsController < ApplicationController
     end
 
     private
+        def ensure_correct_user
+       @ingredient = Ingredient.find(params[:id])
+       unless @ingredient.user == current_user
+       redirect_to root_path
+     end
+   end
 
-        def ingredient_params
-        	params.require(:ingredient).permit(:name, :quanitiy, :note, :expiration_date, :ingredient_category_id )
-        end
+    def ingredient_params
+        params.require(:ingredient).permit(:name, :quanitiy, :note, :expiration_date, :ingredient_category_id )
+    end
 
 
 end

@@ -1,5 +1,7 @@
 class Users::RecipesController < ApplicationController
   # ログイン済ユーザーのみにアクセスを許可する
+  before_action :authenticate_user!, except: [:top,:index,:show]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def top
      @recipes =Recipe.all.order(created_at: :desc).limit(6)
   end
@@ -40,7 +42,6 @@ class Users::RecipesController < ApplicationController
 
   def update
      @recipe = Recipe.find(params[:id])
-     @recipe.user = current_user
      if@recipe.update(recipe_params)
        redirect_to users_recipe_path(@recipe), notice:"レシピを編集しました。"
      else
@@ -56,10 +57,17 @@ class Users::RecipesController < ApplicationController
   end
 
   def collection
-    @recipes = Recipe.order("RANDOM()").page(params[:page]).per(1)
+      @recipes = Recipe.order("RANDOM()").page(params[:page]).per(1)
   end
 
   private
+
+    def ensure_correct_user
+       @recipe = Recipe.find(params[:id])
+       unless @recipe.user == current_user
+       redirect_to root_path
+     end
+   end
 
   def recipe_params
      params.require(:recipe).permit(:name, :image, :ingredient, :seasoning, :explanation, :time, :quanitiy, :plan, :price, :recipe_category_id)
