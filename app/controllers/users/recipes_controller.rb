@@ -14,7 +14,6 @@ class Users::RecipesController < ApplicationController
 
   def show
      @recipe = Recipe.find(params[:id])
-     @recipe =
      @calendar = Calendar.new
      @tags = Tag.all
   end
