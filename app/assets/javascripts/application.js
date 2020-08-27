@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require jquery_ujs
+//= require jquery_nested_form
 
 $(document).on("turbolinks:load", function(){
  //画像プレビュー機能

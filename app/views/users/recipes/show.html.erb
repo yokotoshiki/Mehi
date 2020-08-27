@@ -32,21 +32,30 @@
 	 </div>
 </div>
 
+<div class="row">
+    <div class="col-12">
+    	<div class="col text-center">
+	       <p>材料</p>
+	       <div class="ingredient_show">
+			   <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+			    	<%= recipe_ingredient.name %>
+			    	<%= recipe_ingredient.quanitiy %>
+			    <% end %>
+			</div>
+	       <p>調味料</p>
+	       <div class="ingredient_show">
+			    <% @recipe.seasonings.each do |seasoning| %>
+			    	<%= seasoning.name %>
+			    	<%= seasoning.quanitiy %>
+			    <% end %>
+		   </div>
+		</div>
+	</div>
+</div>
+
 <div class="col text-center">
 	<table class="table table-bordered">
         <tbody>
-	        <tr>
-	    	    <td>材料</td>
-	    	    <td><%= @recipe.ingredient %></td>
-	        </tr>
-	        <tr>
-	    	    <td>調味料</td>
-	    	    <td><%= @recipe.seasoning %></td>
-	        </tr>
-	        <tr>
-	    	    <td>調理時間</td>
-	    	    <td>おおよそ<%= @recipe.time %>分</td>
-	        </tr>
 	        <tr>
 	    	    <td>分量</td>
 	    	    <td><%= @recipe.quanitiy %>人分</td>

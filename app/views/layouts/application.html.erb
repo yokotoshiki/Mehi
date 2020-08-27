@@ -4,7 +4,6 @@
     <title>Mehi</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/fb9a7a8e33.js" crossorigin="anonymous"></script>
@@ -15,7 +14,7 @@
       <div class="container">
         <nav>
           <ul class="nav">
-            <%= link_to "Mehi" %>
+            <%= link_to image_tag('/assets/logo.jpg', width:"90px", height:"100px"), root_path %>
           </ul>
         </nav>
         <nav>
@@ -31,7 +30,7 @@
             <% elsif admin_signed_in? %>
               <li><%= link_to "店舗一覧", admin_stores_path %></li>
               <li><%= link_to "店舗カテゴリ", admin_store_categories_path %></li>
-              <li><%= link_to "レシピタグ", "#" %></li>
+              <li><%= link_to "レシピタグ", admin_tags_path %></li>
               <li><%= link_to "レシピカテゴリ", admin_recipe_categories_path  %></li>
               <li><%= link_to "食材カテゴリ", admin_ingredient_categories_path  %></li>
               <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>

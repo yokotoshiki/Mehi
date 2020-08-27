@@ -41,6 +41,6 @@ class Users::CalendarsController < ApplicationController
   private
 
   def calendar_params
-     params.require(:calendar).permit(:name,  :ingredient, :seasoning, :explanation, :time, :quanitiy, :price, :recipe_id, :user_id)
+     params.require(:calendar).permit(:name,  :ingredient, :seasoning, :explanation, :time, :quanitiy, :price, :recipe_id, :user_id, :plan)
   end
 end

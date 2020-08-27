@@ -5,8 +5,6 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.integer :recipe_category_id
       t.string :name
       t.string :image_id
-      t.text :ingredient
-      t.text :seasoning
       t.text :explanation
       t.integer :time
       t.integer :quanitiy

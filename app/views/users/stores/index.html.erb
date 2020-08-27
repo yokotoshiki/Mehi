@@ -3,7 +3,7 @@
       <div class="store-picup">
       <h1>店舗一覧</h1>
           <% @stores.each do |store| %>
-        	  <div class = "store-box">
+        	  <div class = "info-box">
         	  	<div class = "image-box">
         	  		<%= link_to users_store_path(store) do %>
         	  		  <%= attachment_image_tag store, :image,fallback: "no_image.jpg",size: "200x200"%>

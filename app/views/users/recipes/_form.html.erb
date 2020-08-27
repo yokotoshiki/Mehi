@@ -1,30 +1,35 @@
-<%= form_for(recipe, url: url) do |f| %>
+<%= nested_form_for(recipe, url: url) do |f| %>
  <%= render 'layouts/error_messages', resource: recipe %>
  <div class="col text-center">
   	<div class="recipe_image">
-	  	<%= f.label :image, "料理画像" %></br>
+	  	<%= f.label :name, "料理名" %>
+	  	<%= f.text_field :name %></br>
 	  	<%= attachment_image_tag recipe, :image, id: "img_prev", fallback: "no_image.jpg",size: "300x300" %></br>
 	  	<%= f.attachment_field :image, id: :image%>
     </div>
-
-
+</div>
+ <div class="col text-center">
     <table class="table">
         <tbody>
-            <tr>
-	    	    <td><%= f.label :name, "料理名" %></td>
-	    	    <td><%= f.text_field :name %></td>
+        	<tr>
+	    	    <td><%= f.fields_for :recipe_ingredients do |r| %>
+				    <%= r.label :name, "材料" %></td>
+				    <%= r.text_field :name,{placeholder: "材料名"} %>
+				    <%= r.text_field :quanitiy,{placeholder: "数量"}  %>
+				    <%= f.link_to_remove "削除",class: "btn-sm btn-danger" %>
+				<% end %>
+				    <%= f.link_to_add "追加",:recipe_ingredients ,class: "btn-sm btn-success"%></td></br>
+	    	    <td><%= f.fields_for :seasonings do |s| %>
+				    <%= s.label :name, "調味料" %></td>
+				    <%= s.text_field :name,{placeholder: "調味料名"}  %>
+				    <%= s.text_field :quanitiy,{placeholder: "分量"}  %>
+				    <%= f.link_to_remove "削除",class: "btn-sm btn-danger" %>
+				<% end %>
+				    <%= f.link_to_add "追加",:seasonings,class: "btn-sm btn-success" %></td>
 	        </tr>
 	        <tr>
 	    	    <td><%= f.label :explanation, "作り方" %></td>
 	    	    <td><%= f.text_area :explanation, size:"100x10" %></td>
-	        </tr>
-	        <tr>
-	    	    <td><%= f.label :ingredient, "材料" %></td>
-	    	    <td><%= f.text_area :ingredient,size:"100x5" %></td>
-	        </tr>
-	        <tr>
-	    	    <td><%= f.label :seasoning, "調味料" %></td>
-	    	    <td><%= f.text_area :seasoning,size:"100x5" %></td>
 	        </tr>
 	        <tr>
 	    	    <td><%= f.label :time, "調理時間" %></td>
@@ -57,6 +62,8 @@
 	        </tr>
        </tbody>
 	</table>
+
+
 	<%= f.submit submit, class:"btn btn-lg btn-primary" %>
   </div>
 <% end %>

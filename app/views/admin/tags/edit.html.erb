@@ -1,10 +1,12 @@
-<section class="inner">
-  <h2>タグ管理</h2>
+<div class="container">
+	<div class="col text-center">
+        <h2>タグ管理</h2>
 
-	<%= form_with model: @tag, url:admin_tags_path, local: true do |f| %>
-	    <%= f.label :tag_name, "カテゴリ名" %></br>
-	    <%= f.text_field :tag_name %>
+	    <%= form_with model: @tag, url:admin_tags_path, local: true do |f| %>
+	       <%= f.label :tag_name, "タグ名" %></br>
+	       <%= f.text_field :tag_name %>
 
-	    <%= f.submit "編集",class: "btn btn-primary" %>
-    <% end %>
-</section>
+	       <%= f.submit "編集",class: "btn btn-primary" %>
+        <% end %>
+    </div>
+</div>

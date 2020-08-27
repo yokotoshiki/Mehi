@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_163246) do
+ActiveRecord::Schema.define(version: 2020_08_26_073434) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(version: 2020_08_24_163246) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "recipe_ingredients", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.string "name"
+    t.string "quanitiy"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
+  end
+
   create_table "recipe_tags", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "tag_id"
@@ -91,14 +100,21 @@ ActiveRecord::Schema.define(version: 2020_08_24_163246) do
     t.integer "recipe_category_id"
     t.string "name"
     t.string "image_id"
-    t.text "ingredient"
-    t.text "seasoning"
     t.text "explanation"
     t.integer "time"
     t.integer "quanitiy"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "seasonings", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.string "name"
+    t.string "quanitiy"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_seasonings_on_recipe_id"
   end
 
   create_table "store_categories", force: :cascade do |t|
@@ -111,7 +127,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_163246) do
     t.integer "store_category_id"
     t.string "name"
     t.text "explanation"
-    t.string "area"
+    t.integer "area"
     t.text "address"
     t.string "url"
     t.datetime "created_at", null: false

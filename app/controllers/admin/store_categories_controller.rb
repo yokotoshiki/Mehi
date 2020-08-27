@@ -7,8 +7,8 @@ class Admin::StoreCategoriesController < ApplicationController
 	end
 
 	def create
-		if@store_category = StoreCategory.new(store_category_params)
-          @store_category.save
+		  @store_category = StoreCategory.new(store_category_params)
+        if@store_category.save
 		  redirect_to  admin_store_categories_path
 		else
 		   @store_categories = StoreCategory.all

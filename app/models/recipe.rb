@@ -8,6 +8,11 @@ class Recipe < ApplicationRecord
 	has_many :tags, through: :recipe_tags
 	has_many :calendars, dependent: :destroy
 	has_many :users, through: :favorites
+	has_many :recipe_ingredients ,dependent: :destroy
+	has_many :seasonings, dependent: :destroy
+
+	accepts_nested_attributes_for :recipe_ingredients,allow_destroy: true
+	accepts_nested_attributes_for :seasonings,allow_destroy: true
 
 	attachment :image
 

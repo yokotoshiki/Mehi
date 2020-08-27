@@ -4,7 +4,7 @@ class CreateStores < ActiveRecord::Migration[5.2]
       t.integer :store_category_id
       t.string :name
       t.text :explanation
-      t.string :area
+      t.integer :area
       t.text :address
       t.string :url
 
