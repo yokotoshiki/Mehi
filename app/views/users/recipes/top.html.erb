@@ -7,7 +7,7 @@
                     <h1>ようこそ<strong><%= current_user.name %>さん！</strong></h1>
                 <% else %>
                     <h1>ようこそ<strong>Mehiへ</strong></h1>
-                    <%= link_to  '初めて利用される方'  %></br>
+                    <%= link_to  '初めて利用される方',users_recipes_about_path  %></br>
                     <div class="btn-group" role="group">
                         <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
                         <%= link_to "ログイン", new_user_session_path,class: "btn btn-success" %>

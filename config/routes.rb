@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   root to: 'users/recipes#top'
   namespace :users do
     get 'recipes/collections' => 'recipes#collection'
+    get 'recipes/about' => 'recipes#about'
     resources :recipes do
       resource :favorites, only: [:create, :destroy]
       resource :interests, only: [:create, :destroy]
@@ -36,7 +37,6 @@ Rails.application.routes.draw do
     resources :ingredient_categories, except: [:new, :show]
     resources :tags, except: [:new, :show]
   end
-  get 'home/about' => 'home#about'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

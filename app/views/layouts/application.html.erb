@@ -13,8 +13,8 @@
     <header class="navbar clearfix navbar-fixed-top navbar-inverse">
       <div class="container">
         <nav>
-          <ul class="nav">
-            <%= link_to image_tag('/assets/logo.jpg', width:"90px", height:"100px"), root_path %>
+          <ul class="nav nav-log">
+            <%= link_to "",root_path, class:"nav-logo" %>
           </ul>
         </nav>
         <nav>
@@ -37,7 +37,7 @@
             <!-- ログインしていない時 -->
             <% else %>
               <li><%= link_to "Home", root_path %></li>
-              <li><%= link_to "about", "#" %></li>
+              <li><%= link_to "about", users_recipes_about_path %></li>
               <li><%= link_to "レシピ一覧", users_recipes_path %></li>
               <li><%= link_to "新規登録", new_user_registration_path %></li>
               <li><%= link_to "ログイン", new_user_session_path %></li>

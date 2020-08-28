@@ -1,37 +1,40 @@
 class Users::RecipesController < ApplicationController
   # ログイン済ユーザーのみにアクセスを許可する
-  before_action :authenticate_user!, except: [:top,:index,:show]
+  before_action :authenticate_user!, except: [:top,:index,:show, :about]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def top
      @recipes =Recipe.all.order(created_at: :desc).limit(6)
   end
 
+  def about
+  end
+
   def index
-     @recipes = Recipe.all
-     @tags = Tag.all
+    @recipes = Recipe.all
+    @tags = Tag.all
   end
 
   def show
-     @recipe = Recipe.find(params[:id])
-     @calendar = Calendar.new
-     @tags = Tag.all
+    @recipe = Recipe.find(params[:id])
+    @calendar = Calendar.new
+    @tags = Tag.all
   end
 
   def new
-     @recipe = Recipe.new
-     @recipe.recipe_ingredients.build
-     @recipe.seasonings.build
-     @tags = Tag.all
+    @recipe = Recipe.new
+    @recipe.recipe_ingredients.build
+    @recipe.seasonings.build
+    @tags = Tag.all
   end
 
   def create
-     @recipe = Recipe.new(recipe_params)
-     @recipe.user = current_user
-     if@recipe.save
-       params[:recipe][:tag_ids].drop(1).each do |tag_id|
-         RecipeTag.create!(recipe_id: @recipe.id , tag_id: tag_id)
-       end
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
+    if@recipe.save
+      params[:recipe][:tag_ids].drop(1).each do |tag_id|
+        RecipeTag.create!(recipe_id: @recipe.id , tag_id: tag_id)
+      end
        redirect_to users_recipes_path, notice:"レシピを登録しました。"
      else
       @tags = Tag.all
@@ -40,22 +43,32 @@ class Users::RecipesController < ApplicationController
   end
 
   def edit
-     @recipe = Recipe.find(params[:id])
-     @tags = Tag.all
+    @recipe = Recipe.find(params[:id])
+    @tags = Tag.all
   end
 
   def update
-     @recipe = Recipe.find(params[:id])
-     if@recipe.update(recipe_update_params)
-       ingredient = @recipe.recipe_ingredients.find(recipe_ingredient_update_params[:recipe_ingredients_attributes]["0"]["id"])
-       ingredient.update(recipe_ingredient_update_params[:recipe_ingredients_attributes]["0"])
-       seasoning = @recipe.seasonings.find(seasoning_update_params[:seasonings_attributes]["0"]["id"])
-       seasoning.update(seasoning_update_params[:seasonings_attributes]["0"])
-       @tags =  @recipe.recipe_tags.destroy_all
-       params[:recipe][:tag_ids].drop(1).each do |tag_id|
-         RecipeTag.create!(recipe_id: @recipe.id , tag_id: tag_id)
-       end
-       redirect_to users_recipe_path(@recipe), notice:"レシピを編集しました。"
+    @recipe = Recipe.find(params[:id])
+    if@recipe.update(recipe_update_params)
+      recipe_ingredient_update_params["recipe_ingredients_attributes"].each do |data|
+        ingredient_params = data[1]
+        if ingredient_params["name"] && ingredient_params["quanitiy"]
+            ingredient = @recipe.recipe_ingredients.find(ingredient_params["id"])
+            ingredient.update!(ingredient_params)
+          end
+        end
+        seasoning_update_params["seasonings_attributes"].each do |data|
+          seasoning_params = data[1]
+          if seasoning_params["name"] && seasoning_params["quanitiy"]
+            seasoning = @recipe.seasonings.find(seasoning_params["id"])
+            seasoning.update!(seasoning_params)
+          end
+        end
+        @tags =  @recipe.recipe_tags.destroy_all
+        params[:recipe][:tag_ids].drop(1).each do |tag_id|
+          RecipeTag.create!(recipe_id: @recipe.id , tag_id: tag_id)
+        end
+        redirect_to users_recipe_path(@recipe), notice:"レシピを編集しました。"
      else
       render "edit"
      end
@@ -74,12 +87,12 @@ class Users::RecipesController < ApplicationController
 
   private
 
-    def ensure_correct_user
-       @recipe = Recipe.find(params[:id])
-     unless @recipe.user == current_user
-       redirect_to root_path
-     end
+  def ensure_correct_user
+      @recipe = Recipe.find(params[:id])
+    unless @recipe.user == current_user
+      redirect_to root_path
     end
+  end
 
   def recipe_params
      params.require(:recipe).permit(:name, :image, :ingredient, :seasoning, :explanation, :time, :quanitiy, :plan, :price, :recipe_category_id, recipe_ingredients_attributes: [:name,:quanitiy], seasonings_attributes: [:name,:quanitiy])
