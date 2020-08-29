@@ -11,7 +11,8 @@ class Users::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all
+    @search = Recipe.ransack(params[:q])
+    @recipes = @search.result
     @tags = Tag.all
   end
 
