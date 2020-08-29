@@ -83,7 +83,11 @@ class Users::RecipesController < ApplicationController
   end
 
   def collection
-      @recipes = Recipe.order("RAND()").page(params[:page]).per(1)
+       if Rails.env.production?
+        @recipes = Recipe.order("RAND()").page(params[:page]).per(1)
+      else
+        @recipes = Recipe.order("RANDOM()").page(params[:page]).per(1)
+      end
   end
 
   private
