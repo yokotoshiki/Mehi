@@ -83,7 +83,7 @@ class Users::RecipesController < ApplicationController
   end
 
   def collection
-      @recipes = Recipe.order("RANDOM()").page(params[:page]).per(1)
+      @recipes = Recipe.order("RAND()").page(params[:page]).per(1)
   end
 
   private
