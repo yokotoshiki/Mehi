@@ -33,18 +33,19 @@ class Users::IngredientsController < ApplicationController
 
 
     def destroy
-         @ingredient = Ingredient.find (params[:id])
-         @ingredient.destroy
-         redirect_to users_ingredients_path
+        @ingredient = Ingredient.find (params[:id])
+        @ingredient.destroy
+        redirect_to users_ingredients_path
     end
 
     private
-        def ensure_correct_user
+
+    def ensure_correct_user
        @ingredient = Ingredient.find(params[:id])
        unless @ingredient.user == current_user
        redirect_to root_path
-     end
-   end
+      end
+    end
 
     def ingredient_params
         params.require(:ingredient).permit(:name, :quanitiy, :note, :expiration_date, :ingredient_category_id )
