@@ -8,25 +8,26 @@
 	  	<%= f.attachment_field :image, id: :image%>
     </div>
 </div>
+
  <div class="col text-center">
+	<%= f.fields_for :recipe_ingredients do |r| %>
+		<%= r.hidden_field :id %>
+	    <%= r.label :name, "材料" %>
+	    <%= r.text_field :name,{placeholder: "材料名"} %>
+	    <%= r.text_field :quanitiy,{placeholder: "数量"}  %>
+	    <%= r.link_to_remove "削除",class: "btn-sm btn-danger" %>
+	<% end %>
+	<%= f.link_to_add "追加",:recipe_ingredients ,class: "btn-sm btn-success"%>
+    <%= f.fields_for :seasonings do |s| %>
+        <%= s.hidden_field :id %>
+	    <%= s.label :name, "調味料" %>
+	    <%= s.text_field :name,{placeholder: "調味料名"}  %>
+	    <%= s.text_field :quanitiy,{placeholder: "分量"}  %>
+	    <%= s.link_to_remove "削除",class: "btn-sm btn-danger" %>
+	<% end %>
+	<%= f.link_to_add "追加",:seasonings,class: "btn-sm btn-success" %>
     <table class="table">
         <tbody>
-        	<tr>
-	    	    <td><%= f.fields_for :recipe_ingredients do |r| %>
-				    <%= r.label :name, "材料" %></td>
-				    <%= r.text_field :name,{placeholder: "材料名"} %>
-				    <%= r.text_field :quanitiy,{placeholder: "数量"}  %>
-				    <%= f.link_to_remove "削除",class: "btn-sm btn-danger" %>
-				<% end %>
-				    <%= f.link_to_add "追加",:recipe_ingredients ,class: "btn-sm btn-success"%></td></br>
-	    	    <td><%= f.fields_for :seasonings do |s| %>
-				    <%= s.label :name, "調味料" %></td>
-				    <%= s.text_field :name,{placeholder: "調味料名"}  %>
-				    <%= s.text_field :quanitiy,{placeholder: "分量"}  %>
-				    <%= f.link_to_remove "削除",class: "btn-sm btn-danger" %>
-				<% end %>
-				    <%= f.link_to_add "追加",:seasonings,class: "btn-sm btn-success" %></td>
-	        </tr>
 	        <tr>
 	    	    <td><%= f.label :explanation, "作り方" %></td>
 	    	    <td><%= f.text_area :explanation, size:"100x10" %></td>

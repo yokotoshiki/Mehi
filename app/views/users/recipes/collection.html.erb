@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 	    <div class="col-12">
-			 <div class="col text-center">
+			<div class="col text-center">
 			 	<div class="ingredient">
 					<% @recipes.each do |recipe| %>
 			    	  		<%= link_to users_recipe_path(recipe) do %>
@@ -21,7 +21,7 @@
 			    	<%= link_to "他のレシピ表示",users_recipes_collections_path, class:"btn btn-lg btn-primary"%>
 			    	<%= link_to "マイページ",users_user_path(current_user.id), class:"btn btn-lg btn-secondary"%>
 			    </div>
-	         </div>
+	        </div>
 	    </div>
 	</div>
 </div>
