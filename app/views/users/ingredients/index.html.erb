@@ -1,33 +1,33 @@
 <div class="container">
-<div class="row">
-	<h2>食材一覧</h2>
+	<div class="row">
+	    <h2>食材一覧</h2>
 		<%= link_to new_users_ingredient_path do %>
-		  <i class="fas fa-plus-circle" style="font-size: 40px; float: right; color: #777777"></i>
+		 	<i class="fas fa-plus-circle" style="font-size: 40px; float: right; color: #777777"></i>
 		<% end %>
 	</div>
 
-<table class="table">
-	<thead class="thead-light">
-		<tr>
-			<th>食材名</th>
-			<th>カテゴリ</th>
-			<th>数量</th>
-			<th>賞味期限</th>
-			<th colspan="2"></th>
-		</tr>
-	</thead>
+	<table class="table">
+		<thead class="thead-light">
+			<tr>
+				<th>食材名</th>
+				<th>カテゴリ</th>
+				<th>数量</th>
+				<th>賞味期限</th>
+				<th colspan="2"></th>
+			</tr>
+		</thead>
 
-	<tbody>
-		<% @ingredients.each do |ingredient| %>
-		<tr>
-			<td><%= link_to ingredient.name, users_ingredient_path(ingredient) %></td>
-			<td><%= ingredient.ingredient_category.name %></td>
-			<td><%= ingredient.quanitiy %></td>
-			<td><%= ingredient.expiration_date %></td>
-			<td><%= link_to "編集", edit_users_ingredient_path(ingredient), class: "btn-lg btn-success" %>
-			<%= link_to "削除", users_ingredient_path(ingredient), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-lg btn-danger" %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+		<tbody>
+			<% @ingredients.each do |ingredient| %>
+			<tr>
+				<td><%= link_to ingredient.name, users_ingredient_path(ingredient) %></td>
+				<td><%= ingredient.ingredient_category.name %></td>
+				<td><%= ingredient.quanitiy %></td>
+				<td><%= ingredient.expiration_date %></td>
+				<td><%= link_to "編集", edit_users_ingredient_path(ingredient), class: "btn-lg btn-success" %>
+				<%= link_to "削除", users_ingredient_path(ingredient), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-lg btn-danger" %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
 </div>

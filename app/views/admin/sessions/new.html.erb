@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="col text-center">
-    <h2>管理者ログイン</h2>
+    <div class="col text-center">
+        <h2>管理者ログイン</h2>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-group">
                 <%= f.label :email, "メールアドレス" %></br>
@@ -19,6 +19,6 @@
 
             <%= f.submit "ログイン", class: "btn btn-primary" %>
         <% end %>
-  </div>
+    </div>
 </div>
 

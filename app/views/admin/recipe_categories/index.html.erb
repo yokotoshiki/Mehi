@@ -3,7 +3,7 @@
         <h2>レシピカテゴリ管理</h2>
 
     	<%= form_with model: @recipe_category, url:admin_recipe_categories_path, local: true do |f| %>
-    	    <%= f.label :name, "カテゴリ名" %>　
+    	    <%= f.label :name, "カテゴリ名" %>
     	    <%= f.text_field :name %>
 
     	    <%= f.submit "追加",class: "btn btn-primary" %>

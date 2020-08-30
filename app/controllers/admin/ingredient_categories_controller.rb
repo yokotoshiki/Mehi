@@ -25,9 +25,9 @@ class Admin::IngredientCategoriesController < ApplicationController
 		@ingredient_category = IngredientCategory.find(params[:id])
 		if @ingredient_category.update(ingredient_category_params)
 		   redirect_to  admin_ingredient_categories_path
-		 else
-		 	render 'edit'
-		 end
+		else
+		   render 'edit'
+		end
 	end
 
 	def destroy

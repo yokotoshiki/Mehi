@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col text-center">
-    <h1>レシピ一覧</h1>
+      <h1>レシピ一覧</h1>
       <%= search_form_for(@search, url: users_recipes_path) do |f| %>
         <%= f.search_field :name_cont, placeholder: "例）〇〇〇〇" %>
         <%= f.submit "検索" %>
-    <% end %>
+      <% end %>
    </div>
 </div>
 <div class="row">
@@ -36,11 +36,9 @@
               <% end %>
             <% end %>
             <!-- タグ -->
-              <% recipe.tags.each do |tag| %>
-              <div class="tag">
-                <%= tag.tag_name %>
-              </div>
-              <% end %>
+            <% recipe.tags.each do |tag| %>
+              <div class="tag"><%= tag.tag_name %></div>
+            <% end %>
           </div>
           <% end %>
        </div>
@@ -48,9 +46,9 @@
 </div>
 <div class="col text-center">
   <% if user_signed_in? %>
-      <%= link_to "料理でお困りの方へ",users_recipes_collections_path, class:"btn btn-outline-primary" %>
-      <%= link_to users_stores_path do %>
+    <%= link_to "料理でお困りの方へ",users_recipes_collections_path, class:"btn btn-outline-primary" %>
+    <%= link_to users_stores_path do %>
           <i class="fas fa-store" style="font-size: 40px;color: #777777"></i>
-      <% end %>
+    <% end %>
   <% end %>
 </div>

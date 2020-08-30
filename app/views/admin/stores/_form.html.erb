@@ -1,18 +1,18 @@
 <div class="container">
     <div class="col text-center">
         <%= form_for(store, url: url) do |f| %>
-          <%= render 'layouts/error_messages', resource: store %>
+            <%= render 'layouts/error_messages', resource: store %>
 		  	<div class="store_image">
-			  	<%= f.label :image, "店舗画像" %></br>
+				<%= f.label :image, "店舗画像" %></br>
 			  	<%= attachment_image_tag store, :image, id: "img_prev", fallback: "no_image.jpg",size: "300x300" %></br>
 			  	<%= f.attachment_field :image, id: :image %>
 		    </div>
-            <div  class="form-grop">
+            <div class="form-grop">
 	    	    <%= f.label :name, "店舗名" %></br>
 	    	    <%= f.text_field :name, size:"30x10" %>
 	    	</div>
 
-            <div  class="form-grop">
+            <div class="form-grop">
 	    	    <%= f.label :explanation, "店舗紹介文" %></br>
 	    	    <%= f.text_area :explanation, size:"100x10" %>
 	        </div>

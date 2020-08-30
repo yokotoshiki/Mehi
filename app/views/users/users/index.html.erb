@@ -14,8 +14,8 @@
 
             <% if @user == current_user %>
                   <p><%= link_to "編集する", edit_users_user_path(current_user), class: "btn-lg btn-success" %></p>
-                <% end %>
-                <h1>ユーザー一覧</h1>
+            <% end %>
+            <h1>ユーザー一覧</h1>
         <table class="table">
 	         <thead>
                 <tr>
@@ -29,7 +29,7 @@
  	                <td><%= user.nickname %></td>
  	                <td><%= link_to "Show", users_user_path(current_user.id) %></td>
                 </tr>
-            <% end %>
+                <% end %>
  	        </tbody>
         </table>
     </div>

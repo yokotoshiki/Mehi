@@ -4,6 +4,7 @@
 <div class="row">
 	<div class="col text-center">
 		<p><%= link_to "編集する", edit_admin_store_path(@store), class: "btn-lg btn-success edit_store_#{@store.id}" %>
-			<%= link_to "削除する", admin_store_path(@store), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-lg btn-danger destroy_store_#{@store.id}" %></p>
+			<%= link_to "削除する", admin_store_path(@store), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-lg btn-danger destroy_store_#{@store.id}" %>
+		</p>
 	</div>
 </div>

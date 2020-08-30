@@ -1,8 +1,7 @@
 <div class="container">
 	<div class="col text-center">
         <h2>タグ管理</h2>
-
-	    <%= form_with model: @tag, url:admin_tags_path, local: true do |f| %>
+        <%= form_with model: @tag, url:admin_tags_path, local: true do |f| %>
 	       <%= f.label :tag_name, "タグ名" %></br>
 	       <%= f.text_field :tag_name %>
 

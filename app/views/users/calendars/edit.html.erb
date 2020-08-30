@@ -1,6 +1,6 @@
 <%= form_for(@calendar, url: users_calendar_path(@calendar) ) do |f| %>
-     <%= render 'layouts/error_messages', resource: @calendar %>
-	 <div class="col text-center">
+    <%= render 'layouts/error_messages', resource: @calendar %>
+	<div class="col text-center">
 	    <table class="table">
 	        <tbody>
 		        <tr>
@@ -10,5 +10,5 @@
 		    </tbody>
 		</table>
 		<%= f.submit "更新", class:"btn btn-lg btn-primary" %>
-	  </div>
+	</div>
 <% end %>

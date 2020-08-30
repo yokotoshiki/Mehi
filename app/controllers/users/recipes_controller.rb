@@ -4,7 +4,7 @@ class Users::RecipesController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def top
-     @recipes =Recipe.all.order(created_at: :desc).limit(6)
+    @recipes =Recipe.all.order(created_at: :desc).limit(6)
   end
 
   def about
@@ -37,10 +37,10 @@ class Users::RecipesController < ApplicationController
         RecipeTag.create!(recipe_id: @recipe.id , tag_id: tag_id)
       end
        redirect_to users_recipes_path, notice:"レシピを登録しました。"
-     else
+    else
       @tags = Tag.all
       render 'new'
-     end
+    end
   end
 
   def edit
@@ -50,15 +50,15 @@ class Users::RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    if@recipe.update(recipe_params)
-      @tags =  @recipe.recipe_tags.destroy_all
-      params[:recipe][:tag_ids].drop(1).each do |tag_id|
-        RecipeTag.create!(recipe_id: @recipe.id , tag_id: tag_id)
-      end
-      redirect_to users_recipe_path(@recipe), notice:"レシピを編集しました。"
-     else
+    if @recipe.update(recipe_params)
+       @tags =  @recipe.recipe_tags.destroy_all
+       params[:recipe][:tag_ids].drop(1).each do |tag_id|
+         RecipeTag.create!(recipe_id: @recipe.id , tag_id: tag_id)
+       end
+       redirect_to users_recipe_path(@recipe), notice:"レシピを編集しました。"
+    else
       render "edit"
-     end
+    end
   end
 
 
@@ -80,7 +80,7 @@ class Users::RecipesController < ApplicationController
 
   def ensure_correct_user
       @recipe = Recipe.find(params[:id])
-    unless @recipe.user == current_user
+      unless @recipe.user == current_user
       redirect_to root_path
     end
   end

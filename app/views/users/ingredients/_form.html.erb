@@ -1,5 +1,5 @@
 <%= form_for(ingredient, url: url) do |f| %>
-  <%= render 'layouts/error_messages', resource: ingredient %>
+	<%= render 'layouts/error_messages', resource: ingredient %>
   <div class="col text-center">
     <table class="table">
         <tbody>
@@ -25,6 +25,6 @@
 	        </tr>
 	    </tbody>
 	</table>
-	<%= f.submit submit, class:"btn btn-lg btn-primary" %>
-  </div>
-<% end %>
+	        <%= f.submit submit, class:"btn btn-lg btn-primary" %>
+	<% end %>
+ </div>

@@ -1,8 +1,7 @@
 <div class="container">
     <div class="col text-center">
 	    <h2>店舗カテゴリ管理</h2>
-
-		<%= form_with model: @store_category, url:admin_store_categories_path, local: true do |f| %>
+        <%= form_with model: @store_category, url:admin_store_categories_path, local: true do |f| %>
 		    <%= f.label :name, "カテゴリ名" %></br>
 		    <%= f.text_field :name %>
 

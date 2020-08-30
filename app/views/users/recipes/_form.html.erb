@@ -1,13 +1,13 @@
 <%= nested_form_for(recipe, url: url) do |f| %>
- <%= render 'layouts/error_messages', resource: recipe %>
- <div class="col text-center">
-  	<div class="recipe_image">
-	  	<%= f.label :name, "料理名" %>
-	  	<%= f.text_field :name %></br>
-	  	<%= attachment_image_tag recipe, :image, id: "img_prev", fallback: "no_image.jpg",size: "300x300" %></br>
-	  	<%= f.attachment_field :image, id: :image%>
-    </div>
-</div>
+ 	<%= render 'layouts/error_messages', resource: recipe %>
+	<div class="col text-center">
+	    <div class="recipe_image">
+		  	<%= f.label :name, "料理名" %>
+		  	<%= f.text_field :name %></br>
+		  	<%= attachment_image_tag recipe, :image, id: "img_prev", fallback: "no_image.jpg",size: "300x300" %></br>
+		  	<%= f.attachment_field :image, id: :image%>
+	    </div>
+	</div>
 
  <div class="col text-center">
 	<%= f.fields_for :recipe_ingredients do |r| %>
