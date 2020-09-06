@@ -1,6 +1,6 @@
-<div class="row">
-    <div class="col text-center">
-        <div class="store-picup">
+<div class="clearfix">
+    <div class="row">
+        <div class="col text-center">
         <h1>店舗一覧</h1>
             <% @stores.each do |store| %>
           	  <div class = "info-box">
@@ -12,6 +12,6 @@
       	  	    <%= store.name %>
       	      </div>
             <% end %>
-          </div>
+        </div>
     </div>
 </div>

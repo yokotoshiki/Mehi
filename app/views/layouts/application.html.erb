@@ -46,27 +46,28 @@
         </nav>
       </div>
     </header>
+    <div class="wrapper">
     <%= yield %>
-    <footer>
-      <h5 class="share">SHARE SNS</h5>
+    </div>
+    <footer class="fixed-bottom">
       <ul class="footer-menu">
         <li>
-          <a href="#">
-            <i class="fab fa-twitter"></i>
-          </a>
+          <%= link_to "#" do %>
+            <i class="fab fa-twitter-square"></i>
+          <% end %>
         </li>
         <li>
-          <a href="#">
-            <i class="fab fa-facebook-f"></i>
-          </a>
+          <%= link_to "#" do %>
+            <i class="fab fa-facebook-square"></i>
+          <% end %>
         </li>
         <li>
-          <a href="#">
+          <%= link_to "#" do %>
             <i class="fab fa-instagram"></i>
-          </a>
+          <% end %>
         </li>
       </ul>
-      <p>© All rights reserved by Mehi.</p>
+      <p>© All rights reserved by Mehi.work</p>
     </footer>
   </body>
 </html>
