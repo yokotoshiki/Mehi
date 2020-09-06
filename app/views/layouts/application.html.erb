@@ -41,12 +41,32 @@
               <li><%= link_to "レシピ一覧", users_recipes_path %></li>
               <li><%= link_to "新規登録", new_user_registration_path %></li>
               <li><%= link_to "ログイン", new_user_session_path %></li>
-              <li><%= link_to "管理者はこちら", new_admin_session_path %></li>
             <% end %>
           </ul>
         </nav>
       </div>
     </header>
     <%= yield %>
+    <footer>
+      <h5 class="share">SHARE SNS</h5>
+      <ul class="footer-menu">
+        <li>
+          <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+      </ul>
+      <p>© All rights reserved by Mehi.</p>
+    </footer>
   </body>
 </html>

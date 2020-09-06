@@ -29,7 +29,7 @@ class Users::CalendarsController < ApplicationController
      @calendar = Calendar.find(params[:id])
      @calendar.user = current_user
      @calendar.update(calendar_params)
-     redirect_to users_calendars_path, notice:"レシピを編集しました。"
+     redirect_to users_calendars_path, notice:"編集しました。"
   end
 
   def destroy
